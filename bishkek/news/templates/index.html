@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Официальный сайт мэрии города Бишкек</title>
+    <style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: Berlin Sans FB
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #E6E6FA;
+}
+
+.social-media a img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.languages a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #E6E6FA;
+}
+
+.logo {
+    width: 50px;
+    margin-right: 20px;
+}
+
+h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.news-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.news-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-item h2 {
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.news-item p {
+    padding: 0 10px 10px;
+}
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-top">
+        <div class="social-media">
+            <a href="#"><img src="{% static 'image/facebook-icon.png' %}" alt="Facebook" width="30" height="30"></a>
+            <a href="#"><img src="{% static 'image/youtube-icon.png' %}" alt="YouTube" width="30" height="30"></a>
+            <a href=" #"><img src="{% static 'image/tw-icon.png' %}" alt="Twitter" width="30" height="30"></a>
+            <a href=" #"><img src="{% static 'image/tg-icon.png' %}" alt="Telegram" width="30" height="30"></a>
+        </div>
+        <div class=" languages">
+                <a href="#">Кыргызча</a>
+                <a href="#">English</a>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <img src="{% static 'image/bishkek-flag.png' %}" height="53" width="40">
+        <h3>Официальный сайт мэрии города Бишкек</h3>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">История города</a></li>
+            <li><a href="#">Руководство мэрии</a></li>
+            <li><a href="#">Пресс-служба</a></li>
+            <li><a href="#">Городские истории</a></li>
+            <li><a href="#">Вакансии</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <img src="{% static 'image/bishkek-gif2.gif' %}" alt="Городской пейзаж" class="main-image">
+
+    <div class="news-container">
+            {% for item in news %}
+                <div class="news-item">
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                    <h2>{{ item.title }}</h2>
+                    <p>{{ item.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+</main>
+
+</body>
+</html>
